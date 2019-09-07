@@ -22,7 +22,7 @@ body, html{
 }
 #app {
   font-family: 'Biryani', sans-serif;
-  font-size: 10pt;
+  font-size: 8pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

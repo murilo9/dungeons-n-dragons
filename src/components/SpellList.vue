@@ -9,7 +9,11 @@
 </style>
 
 <script>
+var props = {
+    spells: Array
+}
+
 export default {
-    
+    props: props
 }
 </script>

@@ -9,7 +9,10 @@
 </style>
 
 <script>
+var props = {
+    items: Array
+}
 export default {
-    
+    props: props
 }
 </script>
