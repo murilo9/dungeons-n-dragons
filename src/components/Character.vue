@@ -1,6 +1,11 @@
 <template>
     <div class="character">
-        <input type="text" v-model="character.name" class="name">
+        <div class="header">
+            <input type="text" v-model="character.name" class="name">
+            <a href='#' onclick='event.preventDefault()' @click="deleteChar">
+                Deletar
+            </a>
+        </div>
         <div class="data-1">
             <div class="block">
                 <input type="text" v-model="getGender" class="value">
@@ -113,15 +118,19 @@
         border: 3px solid #3f131b;
         border-radius: 1em;
         padding: 1em;
+        margin: 1em;
         color: 	#6b2f39;
-        .name{
-            background: none;
-            border: none;
-            font-size: 14pt;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 0.5em;
+        .header{
+            display: flex;
+            .name{
+                background: none;
+                border: none;
+                font-size: 14pt;
+                font-weight: bold;
+                text-align: center;
+                width: 90%;
+                margin-bottom: 0.5em;
+            }
         }
         .data-1, .data-2, .data-3, .data-4{
             display: flex;
@@ -249,6 +258,9 @@ var methods = {
             if(att == 5 || att == 4) return "-3"
             if(att == 3 || att == 2) return "-4"
         }
+    },
+    deleteChar(){
+        this.$emit('delete-char', this.character.id)
     }
 }
 

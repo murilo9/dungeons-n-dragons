@@ -29,5 +29,6 @@ body, html{
   color: #2c3e50;
   background: #6b2f39;
   height: 100%;
+  overflow-y: scroll;
 }
 </style>
