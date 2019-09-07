@@ -1,6 +1,6 @@
 <template>
     <div class="character">
-        <h1>{{character.name}}</h1>
+        <input type="text" v-model="character.name" class="name">
         <div class="data-1">
             <div class="block">
                 <input type="text" v-model="getGender" class="value">
@@ -20,7 +20,7 @@
             </div>
             <div class="block">
                 <input type="text" v-model="character.alignment" class="value">
-                <p>Alinhamento</p>
+                <p>Natureza</p>
             </div>
         </div>
         <div class="data-2">
@@ -114,8 +114,13 @@
         border-radius: 1em;
         padding: 1em;
         color: 	#6b2f39;
-        h1{
-            margin-top: 0;
+        .name{
+            background: none;
+            border: none;
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
             margin-bottom: 0.5em;
         }
         .data-1, .data-2, .data-3, .data-4{
@@ -123,7 +128,7 @@
             justify-content: space-around;
             margin-bottom: 1em;
             padding-bottom: 1em;
-            border-bottom: 1px solid gray;
+            border-bottom: 2px solid gray;
             .value{
                 width: 3em;
                 display: inline-block;
@@ -137,10 +142,8 @@
             .block{
                 text-align: left;
                 .value{
-                    border-top: none;
-                    border-left: none;
-                    border-right: none;
-                    border-bottom: 1px solid #6b2f39;
+                    border: none;
+                    
                 }
             }
         }
@@ -150,6 +153,9 @@
                 .value{
                     width: 5em;
                     font-size: 8pt;
+                }
+                p{
+                    border-top: 1px solid #6b2f39;
                 }
             }
         }
