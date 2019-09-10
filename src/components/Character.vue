@@ -24,7 +24,7 @@
                 <p>Classe</p>
             </div>
             <div class="block">
-                <input type="text" v-model="character.alignment" class="value">
+                <input type="text" v-model="getAlignment" class="value">
                 <p>Natureza</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <p>Pontos de Vida</p>
             </div>
             <div class="block">
-                <p class="value">{{getAc}}</p>
+                <input type="text" v-model="getAc" class="value">
                 <p>Classe de Armadura</p>
             </div>
             <div class="block">
@@ -265,6 +265,19 @@ var methods = {
 }
 
 var computed = {
+    getAlignment(){
+        switch(this.character.alignment){
+            case 0: return 'LB'
+            case 1: return 'NB'
+            case 2: return 'CB'
+            case 3: return 'LN'
+            case 4: return 'NN'
+            case 5: return 'CN'
+            case 6: return 'LM'
+            case 7: return 'NM'
+            case 8: return 'CM'
+        }
+    },
     getGender(){
         switch(this.character.gender){
             case 0: return 'M'
