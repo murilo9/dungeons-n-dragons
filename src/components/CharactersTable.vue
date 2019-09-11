@@ -9,8 +9,9 @@
             <Character 
             v-for="character in characters" 
             :key="character.id" 
-            :character="character"
-            @delete-char="deleteChar"/>
+            :characterData="character"
+            @delete-char="deleteChar"
+            @save-char="saveChar"/>
         </draggable>
         <NewCharForm @create-char="createChar"/>
     </div>
@@ -76,6 +77,18 @@ var methods = {
         .then((response) => {
             console.log(response)
             this.loadChars()
+        })
+        .catch((error) => {
+            alert(error)
+        })
+    },
+    saveChar(character){
+        axios.put('http://localhost:8888/character', {
+            char: character
+        })
+        .then((response) => {
+            this.loadChars()
+            alert('Personagem salvo')
         })
         .catch((error) => {
             alert(error)

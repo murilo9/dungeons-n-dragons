@@ -64,6 +64,7 @@ exports.update = (char, next) => {
     `inteligence = ${char.inteligence}, wisdom = ${char.wisdom}, charisma = ${char.charisma} `+
     `WHERE id = ${char.id}`
     console.log(script)
+    next(true)
     DB.con().query(script, (err, results, fields) => {
         if(err){
             console.log(err)

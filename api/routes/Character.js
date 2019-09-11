@@ -21,7 +21,7 @@ router.post('/character', (req, res) => {
 })
 
 router.put('/character', (req, res) => {
-    console.log('UPDATE em character')
+    console.log('PUT em character')
     Character.update(req.body.char, (success) => {
         if(success)
             res.end()
