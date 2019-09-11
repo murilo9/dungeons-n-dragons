@@ -154,13 +154,15 @@
             padding-bottom: 1em;
             border-bottom: 2px solid gray;
             .value{
-                margin-left: 1.5em;
                 width: 3em;
                 display: inline-block;
                 border: none;
                 background: none;
                 color: 	#6b2f39;
                 font-family: 'Biryani', sans-serif;
+                &[type=number]{
+                    margin-left: 1.5em;
+                }
             }
             a{
                 color: #6b2f39;
@@ -171,7 +173,7 @@
                 text-align: left;
                 .value{
                     border: none;
-                    
+                    font-weight: bold;
                 }
             }
         }
@@ -193,6 +195,9 @@
             padding: 0;
             .block{
                 align-items: center;
+                .value{
+                    font-weight: bold;
+                }
                 .sub-block{
                     font-size: 10pt;
                     font-weight: bold;
