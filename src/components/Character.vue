@@ -2,14 +2,17 @@
     <div class="character">
         <div class="header">
             <a href='#' onclick='event.preventDefault()' @click="saveChar">
-                Salvar
+                <i class="save outline icon"></i>
+            </a>
+            <a href='#' onclick='event.preventDefault()' @click="deleteChar">
+                <i class="trash outline icon"></i>
             </a>
             <input type="text" v-model="character.name" class="name">
-            <a href='#' onclick='event.preventDefault()' @click="deleteChar">
-                Deletar
+            <a href='#' onclick='event.preventDefault()' @click="react">
+                <i :class="expanded ? 'compress icon' : 'expand icon'"></i>
             </a>
         </div>
-        <div class="data-1">
+        <div class="data-1" v-if="expanded">
             <div class="block">
                 <a href='' onclick="event.preventDefault()" @click="changeGender">
                     {{getGender}}
@@ -57,7 +60,7 @@
                 <p>Bônus de Profic.</p>
             </div>
         </div>
-        <div class="data-3">
+        <div class="data-3" v-if="expanded">
             <div class="block">
                 <input type="number" v-model="character.level" class="value">
                 <p>Nível</p>
@@ -71,7 +74,7 @@
                 <p>Dado de Vida</p>
             </div>
         </div>
-        <div class="data-4">
+        <div class="data-4" >
             <div class="block">
                 <p class="mod">{{getMod(character.strenght)}}</p>
                 <input type="number" v-model="character.strenght" class="value">
@@ -103,7 +106,7 @@
                 <p class="descri">Carisma</p>
             </div>
         </div>
-        <div class="data-5">
+        <div class="data-5" v-if="expanded">
             <div class="items">
                 <ItemList />
                 <div class="item-description">
@@ -126,7 +129,10 @@
     }
     a{
         text-decoration: none;
-        color: orange;
+        color: #444;
+    }
+    i.icon{
+        font-size: 2em;
     }
     .character{
         display: inline-block;
@@ -281,11 +287,15 @@ var components = {
 
 var data = () => {
     return {
-        character: {}
+        character: {},
+        expanded: false
     }
 }
 
 var methods = {
+    react(){
+        this.expanded = !this.expanded
+    },
     getMod(att){
         if(att >= 10){
             var mod = (att-10)/2+""
@@ -305,7 +315,9 @@ var methods = {
         }
     },
     deleteChar(){
-        this.$emit('delete-char', this.character.id)
+        var del = confirm('Deseja mesmo deletar este personagem?')
+        if(del)
+            this.$emit('delete-char', this.character.id)
     },
     saveChar(){
         this.$emit('save-char', this.character)
