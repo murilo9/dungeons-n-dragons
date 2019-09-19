@@ -1,5 +1,5 @@
 <template>
-    <modal name="new-char-modal" height="524" width="300">
+    <modal name="new-char-modal" height="564" width="300">
         <div class="header">
             Criar Personagem
         </div>
@@ -108,29 +108,34 @@
         font-size: 10pt;
         border-bottom: 1px solid gray;
     }
-    .field{
-        display: flex;
-        justify-content: center;
-        span{
-            width: 40%;
-            text-align: right;
-            padding-right: 1em;
-            padding-left: 2em;
-        }
-        input{
-            width: 30%;
-            margin-right: 4em;
-        }
-        input[type=text]{
-            width: 8em;
-            &.small{
-                text-align: center;
-                width: 3em;
+    form{
+        margin: 1em 0;
+        .field{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.8em;
+            span{
+                width: 40%;
+                text-align: right;
+                padding-right: 1em;
+                padding-left: 2em;
+                padding-top: 0.5em;
             }
-        }
-        .block{
             input{
-                margin: 0;
+                width: 30%;
+                margin-right: 4em;
+            }
+            input[type=text]{
+                width: 8em;
+                &.small{
+                    text-align: center;
+                    width: 3em;
+                }
+            }
+            .block{
+                input{
+                    margin: 0;
+                }
             }
         }
     }
