@@ -31,7 +31,7 @@ router.put('/character', (req, res) => {
 })
 
 router.delete('/character/:id', (req, res) => {
-    console.log('POST em character')
+    console.log('DELETE em character')
     if(!isNaN(req.params.id)){
         Character.delete(req.params.id, (success) => {
             if(success)
