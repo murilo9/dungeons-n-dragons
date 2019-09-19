@@ -29,7 +29,7 @@
                 <p>Classe</p>
             </div>
             <div class="block">
-                <a href='' onclick="event.preventDefault()" @click="changeAlignment">
+                <a href='' onclick="event.preventDefault()" @click="changeAlignment" class="value">
                     {{getAlignment}}
                 </a>
                 <p>Natureza</p>
@@ -38,7 +38,8 @@
         <div class="data-2">
             <div class="block">
                 <p class="sub-block">
-                    <input type="number" v-model="character.hp" class="value">/
+                    <input type="number" v-model="character.hp" class="value">
+                    <span class="slash">/</span>
                     <input type="number" v-model="character.hpMax" class="value">
                 </p>
                 <p>Pontos de Vida</p>
@@ -191,15 +192,19 @@
         }
         .data-2{
             flex-direction: row;
-            border: none;
-            padding: 0;
+            margin-bottom: 1em;
+            padding-bottom: 1em;
             .block{
                 align-items: center;
+                width: 74px;
                 .value{
                     font-weight: bold;
+                    font-size: 14pt;
+                    text-align: center;
+                    margin: 0;
                 }
                 .sub-block{
-                    font-size: 10pt;
+                    font-size: 14pt;
                     font-weight: bold;
                     text-align: center;
                     margin: 0;
@@ -209,11 +214,20 @@
                         color: 	#6b2f39;
                         font-weight: bold;
                         text-align: right;
-                        font-size: 10pt;
+                        font-size: 14pt;
                         border: none;
                         width: 2.5em;
                         background: none;
                         margin: 0;
+                        position: relative;
+                        right: 1em;
+                        &:last-child{
+                            text-align: center;
+                        }
+                    }
+                    .slash{
+                        position: relative;
+                        right: 1em;
                     }
                 }
             }
