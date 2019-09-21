@@ -5,7 +5,7 @@
                 Criar Personagem
             </a>
         </div>
-        <draggable v-model="characters" @start="drag=true" @end="drag=false">
+        <draggable id="character-list" v-model="characters" @start="drag=true" @end="drag=false">
             <Character 
             v-for="character in characters" 
             :key="character.id" 
@@ -28,8 +28,10 @@
             color: #ccc;
         }
     }
-    draggable{
-        display: contents;
+    #character-list{
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
     }
 </style>
 
@@ -54,7 +56,6 @@ var methods = {
             char: char
         })
         .then((response) => {
-            console.log(response.data)
             this.$modal.hide('new-char-modal')
             this.loadChars()
         })
@@ -65,11 +66,10 @@ var methods = {
     loadChars(){
         axios.get('http://localhost:8888/character')
         .then((response) => {
-            console.log(response)
             this.characters = response.data
         })
         .catch((error) => {
-            alert(error)
+            alert("Erro ao carregar personagem: "+error)
         })
     },
     deleteChar(id){

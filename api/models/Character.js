@@ -1,4 +1,5 @@
 const DB = require('../helpers/Db')
+const Item = require('./Item.js')
 
 exports.read = (next) => {
     var script = "SELECT * FROM tbPersonages"

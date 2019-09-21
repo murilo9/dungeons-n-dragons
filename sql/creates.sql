@@ -29,7 +29,7 @@ CREATE TABLE tbPersonageItems(
     inUse BOOLEAN DEFAULT false,
     charOwner INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (harOwner) REFERENCES tbCharacters(id)
+    FOREIGN KEY (charOwner) REFERENCES tbPersonages(id)
 ) engine = innodb;
 
 CREATE TABLE tbSpells(
@@ -38,5 +38,5 @@ CREATE TABLE tbSpells(
     details VARCHAR(1023),
     charOwner INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (charOwner) REFERENCES tbCharacters(id)
+    FOREIGN KEY (charOwner) REFERENCES tbPersonages(id)
 ) engine = innodb;

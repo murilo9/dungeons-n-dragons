@@ -14,8 +14,8 @@ exports.read = (charId, next) => {
                 name: results[r].itemName,
                 details: results[r].details,
                 weight: results[r].weigh,
-                weight: results[r].weigh,
-                inUse: results[r].inUse,
+                charId: results[r].ownerId,
+                inUse: results[r].inUse ? true : false,
             }
             console.log(item)
             items.push(item)
@@ -40,6 +40,7 @@ exports.create = (item, next) => {
     })
 }
 
+//Still not used
 exports.update = (newItem, next) => {
     var script = `UPDATE tbPersonageItems SET `+
     `itemName = "${newItem.name}", details = "${newItem.details}", weigh = ${newItem.weight}, `+

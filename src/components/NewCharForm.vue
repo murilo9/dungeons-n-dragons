@@ -163,7 +163,7 @@ var data = () => {
     return {
         genders: [
             {label: 'Masculino', value: 0},
-            {label: 'Feminico', value: 1},
+            {label: 'Feminino', value: 1},
             {label: 'Não-binário', value: 2}
         ],
         aligments: [

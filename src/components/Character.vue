@@ -74,7 +74,7 @@
                 <p>Dado de Vida</p>
             </div>
         </div>
-        <div class="data-4" >
+        <div class="data-4" :class="expanded ? '' : 'no-border'">
             <div class="block">
                 <p class="mod">{{getMod(character.strenght)}}</p>
                 <input type="number" v-model="character.strenght" class="value">
@@ -107,17 +107,18 @@
             </div>
         </div>
         <div class="data-5" v-if="expanded">
-            <div class="items">
-                <ItemList />
-                <div class="item-description">
-            
-                </div>
+            <div class="tabs">
+                <a href='' onclick='event.preventDefault()' 
+                @click="selectTab(1)" :class="selectedTab == 1 ? 'selected' : ''">Items</a>
+                <a href='' onclick='event.preventDefault()' 
+                @click="selectTab(2)" :class="selectedTab == 2 ? 'selected' : ''">Feitiços</a>
             </div>
-            <div class="spells">
-                <SpellList />
-                <div class="spell-description">
-
-                </div>
+            <div class="tabs-content">
+                <ItemList :itemsData="character.items" 
+                :charId="character.id"
+                v-if="selectedTab == 1"/>
+                <SpellList :spells="character.spells"
+                v-if="selectedTab == 2"/>
             </div>
         </div>
     </div>
@@ -249,6 +250,11 @@
             }
         }
         .data-4{
+            &.no-border{
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
             .block{
                 padding: 0.5em;
                 .mod{
@@ -265,12 +271,15 @@
             }
         }
         .data-5{
-            display: flex;
-            .items, .spells{
-                width: 50%;
-            }
-            .item-description, .spell-description{
-                border: 1px solid gray;
+            .tabs{
+                text-align: left;
+                a{
+                    color: #6b2f39;
+                    margin-right: 1em;
+                }
+                .selected{
+                    font-weight: bold;
+                }
             }
         }
     }
@@ -288,11 +297,15 @@ var components = {
 var data = () => {
     return {
         character: {},
-        expanded: false
+        expanded: false,
+        selectedTab: 1
     }
 }
 
 var methods = {
+    selectTab(tab){
+        this.selectedTab = tab
+    },
     react(){
         this.expanded = !this.expanded
     },
