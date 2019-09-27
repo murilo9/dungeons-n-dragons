@@ -79,15 +79,18 @@ exports.update = (char, next) => {
 }
 
 exports.delete = (charId, next) => {
-    var script = "DELETE FROM tbPersonages WHERE id = " + charId
-    DB.con().query(script, (err, results, fields) => {
-        if(err){
-            console.log(err)
-            next(false)
-        }
-        else{
-            console.log('personagem deletado com sucesso')
-            next(true)
-        }
+    var charItems = Item.deleteCharItems(charId, (deleted) => {     //Delete character items first
+        //Delete character:
+        var script = "DELETE FROM tbPersonages WHERE id = " + charId
+        DB.con().query(script, (err, results, fields) => {
+            if(err){
+                console.log(err)
+                next(false)
+            }
+            else{
+                console.log('personagem deletado com sucesso')
+                next(true)
+            }
+        })
     })
 }

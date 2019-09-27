@@ -5,14 +5,14 @@
                 Criar Personagem
             </a>
         </div>
-        <draggable id="character-list" v-model="characters" @start="drag=true" @end="drag=false">
+        <div class="character-list">
             <Character 
             v-for="character in characters" 
             :key="character.id" 
             :characterData="character"
             @delete-char="deleteChar"
             @save-char="saveChar"/>
-        </draggable>
+        </div>
         <NewCharForm @create-char="createChar"/>
     </div>
 </template>
@@ -28,15 +28,15 @@
             color: #ccc;
         }
     }
-    #character-list{
+    .character-list{
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: baseline;
     }
 </style>
 
 <script>
-import draggable from 'vuedraggable'
 import Character from './Character.vue'
 import NewCharForm from './NewCharForm.vue'
 import axios from 'axios'
@@ -97,7 +97,6 @@ var methods = {
 }
 
 var components = {
-    draggable,
     Character,
     NewCharForm
 }

@@ -72,3 +72,17 @@ exports.delete = (itemId, next) => {
         }
     })
 }
+
+exports.deleteCharItems = (charId, next) => {
+    var script = "DELETE FROM tbPersonageItems WHERE charOwner = " + charId
+    DB.con().query(script, (err, results, fields) => {
+        if(err){
+            console.log(err)
+            next(false)
+        }
+        else{
+            console.log('items do personagem deletados com sucesso')
+            next(true)
+        }
+    })
+}
