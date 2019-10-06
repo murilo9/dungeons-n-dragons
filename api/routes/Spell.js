@@ -1,18 +1,18 @@
 const express = require('express'),
     router = express.Router(),
-    Item = require('../models/Item')
+    Spellstem = require('../models/Spell')
 
-router.get('/item/:char', (req, res) => {
-    console.log('GET em item')
-    Item.read(req.params.char, (items) => {
-        res.send(items)
+router.get('/spell/:char', (req, res) => {
+    console.log('GET em spell')
+    Spell.read(req.params.char, (spells) => {
+        res.send(spells)
     })
 })
 
-router.post('/item', (req, res) => {
-    console.log('POST em item')
+router.post('/spell', (req, res) => {
+    console.log('POST em spell')
     console.log(req.body)
-    Item.create(req.body.item, (success) => {
+    Item.create(req.body.spell, (success) => {
         if(success)
             res.end()
         else
@@ -20,8 +20,8 @@ router.post('/item', (req, res) => {
     })
 })
 
-router.delete('/item/:id', (req, res) => {
-    console.log('DELETE em item')
+router.delete('/spell/:id', (req, res) => {
+    console.log('DELETE em spell')
     if(!isNaN(req.params.id)){
         Item.delete(req.params.id, (success) => {
             if(success)

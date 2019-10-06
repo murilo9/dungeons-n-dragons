@@ -18,6 +18,15 @@ CREATE TABLE tbPersonages(
     inteligence INT(2) NOT NULL,
     wisdom INT(2) NOT NULL,
     charisma INT(2) NOT NULL,
+    spellSlot1 INT (2) DEFAULT 0,
+    spellSlot2 INT (2) DEFAULT 0,
+    spellSlot3 INT (2) DEFAULT 0,
+    spellSlot4 INT (2) DEFAULT 0,
+    spellSlot5 INT (2) DEFAULT 0,
+    spellSlot6 INT (2) DEFAULT 0,
+    spellSlot7 INT (2) DEFAULT 0,
+    spellSlot8 INT (2) DEFAULT 0,
+    spellSlot9 INT (2) DEFAULT 0,
     PRIMARY KEY (id)
 ) engine = innodb;
 
@@ -32,9 +41,10 @@ CREATE TABLE tbPersonageItems(
     FOREIGN KEY (charOwner) REFERENCES tbPersonages(id)
 ) engine = innodb;
 
-CREATE TABLE tbSpells(
+CREATE TABLE tbPersonageSpells(
     id INT AUTO_INCREMENT,
     spellName VARCHAR(60),
+    spellLevel INT(1) NOT NULL,
     details VARCHAR(1023),
     charOwner INT NOT NULL,
     PRIMARY KEY (id),

@@ -41,7 +41,7 @@ exports.create = (item, next) => {
 }
 
 //Still not used
-exports.update = (newItem, next) => {
+/*exports.update = (newItem, next) => {
     var script = `UPDATE tbPersonageItems SET `+
     `itemName = "${newItem.name}", details = "${newItem.details}", weigh = ${newItem.weight}, `+
     `inUse = ${newItem.inUse} WHERE id = ${newItem.ownerId}`
@@ -57,7 +57,7 @@ exports.update = (newItem, next) => {
             next(true)
         }
     })
-}
+}*/
 
 exports.delete = (itemId, next) => {
     var script = "DELETE FROM tbPersonageItems WHERE id = " + itemId
